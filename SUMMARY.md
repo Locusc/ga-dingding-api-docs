@@ -96,5 +96,5 @@
     * [获取应用access_token](NotLogin/Get_Token.md)
 
 ## 最后
-* [致谢](part2/feedback_please.md)
+* [致谢](TheEnd/ThanksFor.md)
 
