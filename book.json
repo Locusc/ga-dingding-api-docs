@@ -1,0 +1,77 @@
+{
+    "title": "ga-dingding-api",
+    "author": "Jay Chan",
+    "description": "第三方应用请求政务钉钉服务端API工具文档",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "styles": {
+        "website": "./styles/website.css"
+    },
+    "structure": {
+        "readme": "README.md"
+    },
+    "links": {
+        "sidebar": {
+            "GITHUB": "https://github.com/Locusc",
+            "个人博客": "https://www.blog.locusc.cn/"
+        }
+    },
+    "plugins": [
+        "-sharing",
+        "splitter",
+        "expandable-chapters-small",
+        "anchors",
+        "github",
+        "github-buttons",
+        "sharing-plus",
+        "anchor-navigation-ex",
+        "favicon"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/Locusc"
+        },
+        "github-buttons": {
+            "buttons": [
+                {
+                    "user": "Locusc",
+                    "repo": "ga-dingding-api",
+                    "type": "star",
+                    "size": "small",
+                    "count": true
+                }
+            ]
+        },
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": false,
+            "qzone": false,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": false,
+            "whatsapp": false,
+            "all": [
+                "google", "facebook", "weibo", "twitter",
+                "qq", "qzone", "linkedin", "pocket"
+            ]
+        },
+        "anchor-navigation-ex": {
+            "showLevel": false
+        },
+        "favicon":{
+            "shortcut": "./sources/images/favicon-32x32.webp",
+            "bookmark": "./sources/images/favicon-32x32.webp",
+            "appleTouch": "./sources/images/apple-touch-icon.webp"
+        }
+    }
+}

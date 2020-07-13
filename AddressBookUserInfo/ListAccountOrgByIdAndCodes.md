@@ -1,0 +1,2 @@
+# 批量根据accountId、tenantId、organizationCode查询这个账号是否在这个租户的这些组织内
+
