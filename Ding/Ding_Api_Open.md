@@ -29,7 +29,7 @@
                 .addParameter("bodyType", jsonObject.getString("bodyType"));
         if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("receivers"))) {
             jsonObject.getJSONArray("receivers").forEach(receiver -> {
-                postClient.addParameter("bodyType", String.valueOf(receiver));
+                postClient.addParameter("receivers", String.valueOf(receiver));
             });
         } else {
             postClient.addParameter("receivers", jsonObject.getJSONObject("receivers").toJSONString());
