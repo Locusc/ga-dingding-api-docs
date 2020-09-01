@@ -10,7 +10,7 @@ __The simple configuration, Using a simple__
     <dependency>
         <groupId>cn.locusc</groupId>
         <artifactId>ga-dingding-api-client</artifactId>
-        <version>1.2.1</version>
+        <version>1.3.0</version>
     </dependency>
 ```
 ## application.yml 配置：
@@ -31,8 +31,7 @@ gad:
 ```
 ## 包含：
 1. 包含官方请求SDK的功能。
-2. 包含官方现有服务端API除日程外的的实现方法。
-
+2. 包含官方现有服务端API的实现方法。
 ## 欢迎提交issue
 如果对您有帮助，希望能给项目一个Star
 ## 联系作者：

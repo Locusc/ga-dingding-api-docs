@@ -10,7 +10,7 @@
     String employeeAuthScopes(JSONObject jsonObject);
 ```
 ## 入参说明
-[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2638)
+[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2642)
 ## 实现方法
 ```java
     /**
