@@ -23,12 +23,16 @@
         PostClient postClient = this.newGadPostClient(GadABUIApiConstants.ABUI_LIST_ORG_EMPLOYEE_POSITION_BY_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")))
                 .addParameter("organizationCode", jsonObject.getString("organizationCode"));
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("employeeCodes"))) {
-            jsonObject.getJSONArray("employeeCodes").forEach(code -> {
-                postClient.addParameter("employeeCodes", String.valueOf(code));
-            });
-        } else if(StringUtils.isNotEmpty(jsonObject.getString("employeeCodes"))) {
-            postClient.addParameter("employeeCodes", jsonObject.getString("employeeCodes"));
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("employeeCodes"))) {
+                jsonObject.getJSONArray("employeeCodes").forEach(code -> {
+                    postClient.addParameter("employeeCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("employeeCodes"))) {
+                postClient.addParameter("employeeCodes", jsonObject.getString("employeeCodes"));
+            }
         }
         return postClient.post();
     }

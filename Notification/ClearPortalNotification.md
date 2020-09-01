@@ -23,12 +23,16 @@
         PostClient postClient = this.newGadPostClient(GadWNMApiConstants.NOTIFICATION_MESSAGE_CLEAR_PORTAL_NOTIFICATION)
                 .addParameter("accountId", String.valueOf(jsonObject.getLong("accountId")))
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("bizMsgIds"))) {
-            jsonObject.getJSONArray("bizMsgIds").forEach(id -> {
-                postClient.addParameter("bizMsgIds", (String) id);
-            });
-        } else {
-            postClient.addParameter("bizMsgIds", jsonObject.getString("bizMsgIds"));
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("bizMsgIds"))) {
+                jsonObject.getJSONArray("bizMsgIds").forEach(id -> {
+                    postClient.addParameter("bizMsgIds", (String) id);
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("bizMsgIds"))) {
+                postClient.addParameter("bizMsgIds", jsonObject.getString("bizMsgIds"));
+            }
         }
         return postClient.post();
     }

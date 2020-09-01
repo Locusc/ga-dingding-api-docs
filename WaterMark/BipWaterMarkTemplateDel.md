@@ -21,12 +21,16 @@
     @Override
     public String bipWaterMarkTemplateDel(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadWaterMarkConstants.BIP_WATERMARK_TEMPLATE_PAGE_QUERY);
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("templateIds"))) {
-            jsonObject.getJSONArray("templateIds").forEach(id -> {
-                postClient.addParameter("templateIds", String.valueOf(id));
-            });
-        } else {
-            postClient.addParameter("templateIds", jsonObject.getString("templateIds"));
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("templateIds"))) {
+                jsonObject.getJSONArray("templateIds").forEach(id -> {
+                    postClient.addParameter("templateIds", String.valueOf(id));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("templateIds"))) {
+                postClient.addParameter("templateIds", jsonObject.getString("templateIds"));
+            }
         }
         return postClient.post();
     }

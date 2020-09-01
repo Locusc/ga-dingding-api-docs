@@ -22,12 +22,16 @@
     public String employeeListEmpByCodes(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadABUIApiConstants.ABUI_LIST_EMPLOYEES_BY_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if (StringUtils.isNotEmpty(jsonObject.getString("employeeCodes"))) {
-            postClient.addParameter("employeeCodes", jsonObject.getString("employeeCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("employeeCodes"))) {
-            jsonObject.getJSONArray("employeeCodes").forEach(code -> {
-                postClient.addParameter("employeeCodes", String.valueOf(code));
-            });
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("employeeCodes"))) {
+                jsonObject.getJSONArray("employeeCodes").forEach(code -> {
+                    postClient.addParameter("employeeCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if (StringUtils.isNotEmpty(jsonObject.getString("employeeCodes"))) {
+                postClient.addParameter("employeeCodes", jsonObject.getString("employeeCodes"));
+            }
         }
         return postClient.post();
     }

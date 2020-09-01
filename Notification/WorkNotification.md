@@ -70,26 +70,35 @@
         } else {
             throw new GadNullPointerException("tenantId is empty in messageWorkNotification");
         }
+
         if(StringUtils.isNotEmpty(jsonObject.getString("msg"))) {
             postClient.addParameter("msg", jsonObject.getString("msg"));
-        } else if(!jsonObject.getJSONObject("msg").isEmpty()) {
-            postClient.addParameter("msg", jsonObject.getJSONObject("msg").toJSONString());
         } else {
             throw new GadNullPointerException("msg is empty in messageWorkNotification");
         }
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))) {
-            jsonObject.getJSONArray("organizationCodes").forEach(code -> {
-                postClient.addParameter("organizationCodes", String.valueOf(code));
-            });
-        } else if(StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))){
-            postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
+
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))) {
+                jsonObject.getJSONArray("organizationCodes").forEach(code -> {
+                    postClient.addParameter("organizationCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))){
+                postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
+            }
         }
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("receiverIds"))) {
-            jsonObject.getJSONArray("receiverIds").forEach(id -> {
-                postClient.addParameter("receiverIds", String.valueOf(id));
-            });
-        } else if(StringUtils.isNotEmpty(jsonObject.getString("receiverIds"))) {
-            postClient.addParameter("receiverIds", jsonObject.getString("receiverIds"));
+
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("receiverIds"))) {
+                jsonObject.getJSONArray("receiverIds").forEach(id -> {
+                    postClient.addParameter("receiverIds", String.valueOf(id));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("receiverIds"))) {
+                postClient.addParameter("receiverIds", jsonObject.getString("receiverIds"));
+            }
         }
         return postClient.post();
     }

@@ -22,15 +22,19 @@
     public String deptListGovBusinessStripsByCodes(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadABDIApiConstants.ABDI_LIST_GOV_BUSINESS_STRIPS_BY_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if(StringUtils.isNotEmpty(jsonObject.getString("businessStripCodes"))) {
-            postClient.addParameter("businessStripCodes", jsonObject.getString("businessStripCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("businessStripCodes"))){
-            if(jsonObject.getJSONArray("businessStripCodes").size() <= 100) {
-                jsonObject.getJSONArray("businessStripCodes").forEach(code -> {
-                    postClient.addParameter("businessStripCodes", String.valueOf(code));
-                });
-            } else {
-                throw new GadIndexOutOfBoundsException("The length of the businessStripCodes is over 100 in deptListGovBusinessStripsByCodes");
+        try {
+             if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("businessStripCodes"))){
+                if(jsonObject.getJSONArray("businessStripCodes").size() <= 100) {
+                    jsonObject.getJSONArray("businessStripCodes").forEach(code -> {
+                        postClient.addParameter("businessStripCodes", String.valueOf(code));
+                    });
+                } else {
+                    throw new GadIndexOutOfBoundsException("The length of the businessStripCodes is over 100 in deptListGovBusinessStripsByCodes");
+                }
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("businessStripCodes"))) {
+                postClient.addParameter("businessStripCodes", jsonObject.getString("businessStripCodes"));
             }
         }
         return postClient.post();

@@ -22,12 +22,16 @@
     public String deptListOrganizationByCodes(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadABDIApiConstants.ABDI_LIST_ORGANIZATION_BY_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if(StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))) {
-            postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))){
-            jsonObject.getJSONArray("organizationCodes").forEach(code -> {
-                postClient.addParameter("organizationCodes", String.valueOf(code));
-            });
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))){
+                jsonObject.getJSONArray("organizationCodes").forEach(code -> {
+                    postClient.addParameter("organizationCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))) {
+                postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
+            }
         }
         return postClient.post();
     }

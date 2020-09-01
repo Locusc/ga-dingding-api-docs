@@ -23,12 +23,16 @@
     public String deptListDivisionsByCodes(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadABDIApiConstants.ABDI_LIST_DIVISIONS_BY_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if(StringUtils.isNotEmpty(jsonObject.getString("divisionCodes"))) {
-            postClient.addParameter("divisionCodes", jsonObject.getString("divisionCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("divisionCodes"))){
-            jsonObject.getJSONArray("divisionCodes").forEach(code -> {
-                postClient.addParameter("divisionCodes", String.valueOf(code));
-            });
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("divisionCodes"))){
+                jsonObject.getJSONArray("divisionCodes").forEach(code -> {
+                    postClient.addParameter("divisionCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("divisionCodes"))) {
+                postClient.addParameter("divisionCodes", jsonObject.getString("divisionCodes"));
+            }
         }
         return postClient.post();
     }

@@ -21,12 +21,6 @@
     @Override
     public String GbsTraceStopTraceCollectByIsv(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadTraceConstants.GBS_TRACE_STOP_TRACE_COLLECT_BY_ISV)
-                .addParameter("appName", jsonObject.getString("appName"))
-                .addParameter("bizScene", jsonObject.getString("bizScene"))
-                .addParameter("accessToken", jsonObject.getString("accessToken"))
-                .addParameter("deviceId", jsonObject.getString("deviceId"))
-                .addParameter("clientType", jsonObject.getString("clientType"))
-                .addParameter("osType", jsonObject.getString("osType"))
                 .addParameter("traceId", jsonObject.getString("traceId"))
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")))
                 .addParameter("userId", String.valueOf(jsonObject.getLong("userId")))

@@ -21,12 +21,6 @@
     @Override
     public String GbsTraceQueryUserByIsv(JSONObject jsonObject) {
         PostClient postClient = this.newGadPostClient(GadTraceConstants.GBS_TRACE_QUERY_USER_BY_ISV)
-                .addParameter("appName", jsonObject.getString("appName"))
-                .addParameter("bizScene", jsonObject.getString("bizScene"))
-                .addParameter("accessToken", jsonObject.getString("accessToken"))
-                .addParameter("deviceId", jsonObject.getString("deviceId"))
-                .addParameter("clientType", jsonObject.getString("clientType"))
-                .addParameter("osType", jsonObject.getString("osType"))
                 .addParameter("traceId", jsonObject.getString("traceId"))
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")))
                 .addParameter("startTime", String.valueOf(jsonObject.getLong("startTime")))

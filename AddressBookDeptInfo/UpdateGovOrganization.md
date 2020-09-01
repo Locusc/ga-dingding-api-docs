@@ -38,19 +38,27 @@
                 .addParameter("govContactNumber", jsonObject.getString("govContactNumber"))
                 .addParameter("govAddress", jsonObject.getString("govAddress"))
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")));
-        if(StringUtils.isNotEmpty(jsonObject.getString("govBusinessStripCodes"))) {
-            postClient.addParameter("govBusinessStripCodes", jsonObject.getString("govBusinessStripCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("govBusinessStripCodes"))) {
-            jsonObject.getJSONArray("govBusinessStripCodes").forEach(code -> {
-                postClient.addParameter("govBusinessStripCodes", String.valueOf(code));
-            });
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("govBusinessStripCodes"))) {
+                jsonObject.getJSONArray("govBusinessStripCodes").forEach(code -> {
+                    postClient.addParameter("govBusinessStripCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("govBusinessStripCodes"))) {
+                postClient.addParameter("govBusinessStripCodes", jsonObject.getString("govBusinessStripCodes"));
+            }
         }
-        if(StringUtils.isNotEmpty(jsonObject.getString("govResponsibleEmployeeCodes"))) {
-            postClient.addParameter("govResponsibleEmployeeCodes", jsonObject.getString("govResponsibleEmployeeCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("govResponsibleEmployeeCodes"))) {
-            jsonObject.getJSONArray("govResponsibleEmployeeCodes").forEach(code -> {
-                postClient.addParameter("govResponsibleEmployeeCodes", String.valueOf(code));
-            });
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("govResponsibleEmployeeCodes"))) {
+                jsonObject.getJSONArray("govResponsibleEmployeeCodes").forEach(code -> {
+                    postClient.addParameter("govResponsibleEmployeeCodes", String.valueOf(code));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("govResponsibleEmployeeCodes"))) {
+                postClient.addParameter("govResponsibleEmployeeCodes", jsonObject.getString("govResponsibleEmployeeCodes"));
+            }
         }
         return postClient.post();
     }

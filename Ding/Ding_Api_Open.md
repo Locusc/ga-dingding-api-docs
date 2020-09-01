@@ -27,12 +27,16 @@
                 .addParameter("textType", jsonObject.getString("textType"))
                 .addParameter("body", jsonObject.getString("body"))
                 .addParameter("bodyType", jsonObject.getString("bodyType"));
-        if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("receivers"))) {
-            jsonObject.getJSONArray("receivers").forEach(receiver -> {
-                postClient.addParameter("receivers", String.valueOf(receiver));
-            });
-        } else {
-            postClient.addParameter("receivers", jsonObject.getJSONObject("receivers").toJSONString());
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("receivers"))) {
+                jsonObject.getJSONArray("receivers").forEach(receiver -> {
+                    postClient.addParameter("receivers", String.valueOf(receiver));
+                });
+            }
+        } catch (Exception e) {
+            if(jsonObject.getJSONObject("receivers").toJSONString() != null) {
+                postClient.addParameter("receivers", jsonObject.getJSONObject("receivers").toJSONString());
+            }
         }
         return postClient.post();
     }

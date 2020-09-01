@@ -26,14 +26,16 @@
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")))
                 .addParameter("name", jsonObject.getString("name"))
                 .addParameter("managementType", String.valueOf(jsonObject.getInteger("managementType")));
-        if(StringUtils.isNotEmpty(jsonObject.getString("useridlist"))) {
-            postClient.addParameter("useridlist", jsonObject.getString("useridlist"));
-        } else if (!CollectionUtils.isEmpty(jsonObject.getJSONArray("useridlist"))) {
-            jsonObject.getJSONArray("useridlist").forEach(uid -> {
-                postClient.addParameter("useridlist", String.valueOf(uid));
-            });
-        } else {
-            throw new GadNullPointerException("useridlist is empty in chatCreate.");
+        try {
+             if (!CollectionUtils.isEmpty(jsonObject.getJSONArray("useridlist"))) {
+                jsonObject.getJSONArray("useridlist").forEach(uid -> {
+                    postClient.addParameter("useridlist", String.valueOf(uid));
+                });
+            }
+        } catch (Exception e) {
+            if(StringUtils.isNotEmpty(jsonObject.getString("useridlist"))) {
+                postClient.addParameter("useridlist", jsonObject.getString("useridlist"));
+            }
         }
         return postClient.post();
     }

@@ -23,15 +23,19 @@
         PostClient postClient = this.newGadPostClient(GadABUIApiConstants.ABUI_LIST_ACCOUNT_ORG_BY_ID_AND_CODES)
                 .addParameter("tenantId", String.valueOf(jsonObject.getLong("tenantId")))
                 .addParameter("accountId", String.valueOf(jsonObject.getLong("accountId")));
-        if (StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))) {
-            postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
-        } else if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))) {
-            if(jsonObject.getJSONArray("organizationCodes").size() <= 100) {
-                jsonObject.getJSONArray("organizationCodes").forEach(code -> {
-                    postClient.addParameter("organizationCodes", (String) code);
-                });
-            } else {
-                throw new GadIndexOutOfBoundsException("The length of the organizationCodes is over 100 in employeeListAccountOrgByIdAndCodes");
+        try {
+            if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("organizationCodes"))) {
+                if(jsonObject.getJSONArray("organizationCodes").size() <= 100) {
+                    jsonObject.getJSONArray("organizationCodes").forEach(code -> {
+                        postClient.addParameter("organizationCodes", (String) code);
+                    });
+                } else {
+                    throw new GadIndexOutOfBoundsException("The length of the organizationCodes is over 100 in employeeListAccountOrgByIdAndCodes");
+                }
+            }
+        } catch (Exception e) {
+            if (StringUtils.isNotEmpty(jsonObject.getString("organizationCodes"))) {
+                postClient.addParameter("organizationCodes", jsonObject.getString("organizationCodes"));
             }
         }
         return postClient.post();
