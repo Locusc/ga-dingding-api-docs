@@ -10,7 +10,7 @@
     String calendarAppQueryAppVisibleList(JSONObject jsonObject);
 ```
 ## 入参说明
-[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2691)
+[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2693)
 ## 实现方法
 ```java
     /**

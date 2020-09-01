@@ -10,7 +10,7 @@
     String chatGroupMessageReadUsers(JSONObject jsonObject);
 ```
 ## 入参说明
-[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2604)
+[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2603)
 ## 实现方法
 ```java
     /**

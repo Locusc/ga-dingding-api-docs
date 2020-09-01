@@ -10,7 +10,7 @@
     String calendarAppUserVisibleApps(JSONObject jsonObject);
 ```
 ## 入参说明
-[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2692)
+[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2690)
 ## 实现方法
 ```java
     /**

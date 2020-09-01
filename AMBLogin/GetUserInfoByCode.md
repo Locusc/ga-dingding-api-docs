@@ -10,7 +10,7 @@
     String rpcOauth2GetUserInfoByCode(JSONObject jsonObject);
 ```
 ## 入参说明
-[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2536)
+[参考官方文档](https://openplatform-portal.dg-work.cn/#/doc-jsapi?apiType=serverapi&docKey=2561)
 ## 实现方法
 ```java
     /**
