@@ -91,6 +91,7 @@
     * [发送消息](Message/Chat_SendMsg.md)
     * [获取群成员](Message/Chat_Group_Get_Users.md)
     * [获取消息已读人数](Message/Chat_Group_Message_Read_Users.md)
+    * [更新群会话](Message/Chat_Group_Update.md)
 * [业务事件回调](EventCallBack/README.md)
     * [移除失败回调](EventCallBack/Remove_CB_Failed.md)
     * [重试失败回调](EventCallBack/Retry_CB_Failed.md)
