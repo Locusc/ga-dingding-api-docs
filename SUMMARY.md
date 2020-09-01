@@ -137,6 +137,7 @@
     * [根据条线查询条线线](AddressBookDeptInfo/GetGovBusinessStripLine.md)
     * [根据条线Code列表查询](AddressBookDeptInfo/ListGovBusinessStripsByCodes.md)
     * [组织ID转换接口](AddressBookDeptInfo/ZzdDeptGetDepMapByType.md)
+    * [根据组织code查询组织下的员工人数](AddressBookDeptInfo/DeptGetOrganizationEmployeeCount.md)
 * [获取通讯录用户信息](AddressBookUserInfo/README.md)
     * [冻结和解冻账号](AddressBookUserInfo/UpdateGovAccountStatus.md)
     * [根据员工Code获取员工标签Code列表](AddressBookUserInfo/ListEmployeeTags.md)
