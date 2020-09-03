@@ -22,7 +22,7 @@
      **/
     @Override
     public String mediaDownload(String accessToken, String mediaId) {
-        PostClient postClient = this.newGadPostClient(GadJsApiAuthConstants.GET_JS_API_TOKEN)
+        PostClient postClient = this.newGadPostClient(GadFileStorageConstants.MEDIA_DOWNLOAD)
                 .addParameter("access_token", accessToken)
                 .addParameter("media_id", mediaId);
         return postClient.post();

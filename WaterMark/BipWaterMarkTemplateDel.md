@@ -20,7 +20,7 @@
      **/
     @Override
     public String bipWaterMarkTemplateDel(JSONObject jsonObject) {
-        PostClient postClient = this.newGadPostClient(GadWaterMarkConstants.BIP_WATERMARK_TEMPLATE_PAGE_QUERY);
+        PostClient postClient = this.newGadPostClient(GadWaterMarkConstants.BIP_WATERMARK_TEMPLATE_DEL);
         try {
             if(!CollectionUtils.isEmpty(jsonObject.getJSONArray("templateIds"))) {
                 jsonObject.getJSONArray("templateIds").forEach(id -> {
