@@ -147,7 +147,7 @@
     * [根据员工Code获取员工标签Code列表](AddressBookUserInfo/ListEmployeeTags.md)
     * [删除员工的任职](AddressBookUserInfo/DeleteGovEmployeePosition.md)
     * [更新员工的任职](AddressBookUserInfo/UpdateGovEmployeePosition.md)
-    * [删除员工](AddressBookUserInfo//DeleteGovEmployee.md)
+    * [删除员工](AddressBookUserInfo/DeleteGovEmployee.md)
     * [失效员工](AddressBookUserInfo/DeactivateGovEmployee.md)
     * [修改员工](AddressBookUserInfo/UpdateGovEmployee.md)
     * [创建员工的任职](AddressBookUserInfo/CreateGovEmployeePosition.md)
